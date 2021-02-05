@@ -32,7 +32,6 @@ public class LoginController {
 	@Autowired
 	private OAuth2Parameters googleOAuth2Parameters;
 	
-
 	@RequestMapping(value = "/intro", method = RequestMethod.GET)
 	public String intro(String t, Model model) {
 		return "intro";

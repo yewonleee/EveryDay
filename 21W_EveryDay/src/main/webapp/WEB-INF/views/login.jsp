@@ -109,18 +109,8 @@ a {
 <!--favicon 설정 -->
 <link rel="icon" href="../img/favicon.ico" type="image/x-icon">
 <!--favicon 설정 -->
-<script>
-	function onSignIn(googleUser) {
-		var profile = googleUser.getBasicProfile();
-		console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
-		console.log('Name: ' + profile.getName());
-		console.log('Image URL: ' + profile.getImageUrl());
-		console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
-	}
-</script>
 </head>
 <body>
-	<script src="https://apis.google.com/js/platform.js" async defer></script>
 	<div class="login">
 		<div class="top">
 			<i class="fa fa-calendar" aria-hidden="true" style="font-size: 45px;"></i>
