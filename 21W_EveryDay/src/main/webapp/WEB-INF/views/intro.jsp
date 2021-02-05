@@ -196,6 +196,8 @@ h2 {
 
 */
 
+/*push하려고 만든거입니*/
+
 .scribe {
 	margin-top: 50px;
 }
@@ -617,7 +619,7 @@ a {
 	</section>
 
 	<section>
-		<p class="sample">이 웹사이트는 웹서비스 개발 연습 목적으로 만들어졌습니다.</p>
+		<p class="sample">이 웹사이트는 웹서비스 개발 연습 목적으로 만들어졌습니다. 지금 github에 잘 올라가는지 보려고 수정하는 것입니다 !</p>
 	</section>
 
 	<section class="footer">
