@@ -109,6 +109,13 @@ a {
 <!--favicon 설정 -->
 <link rel="icon" href="../img/favicon.ico" type="image/x-icon">
 <!--favicon 설정 -->
+
+<!-- google signin api -->
+<script src="https://apis.google.com/js/platform.js?onload=init" async
+	defer></script>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+
+
 </head>
 <body>
 	<div class="login">
@@ -128,11 +135,25 @@ a {
 			</div>
 			<button type='submit'>로그인</button>
 		</form>
-
-		<div id="google_id_login" style="text-align: center">
+	<!-- 
+	<div id="google_id_login" style="text-align: center">
 			<a href="${google_url}" style="color: white;"><i
 				class="fa fa-google" aria-hidden="true"></i> Google Login</a>
+			<!-- <span style="color: white;" onclick="init();"><i
+				class="fa fa-google" aria-hidden="true"></i>Google Login</span> -->
+			<!-- button type="button" id="google_login" class="circle google"
+				onclick="initt()">
+				<i class="fa fa-google-plus fa-fw"></i>
+			</button> 
 		</div>
+	 -->
+
+		<form action="/connect/google" method="POST" style="display: inline">
+			<input type="hidden" name="scope" value="profile email" />
+			<button type="submit" class="btn btn-danger">
+				Google <span class="fa fa-google-plus"></span>
+			</button>
+		</form>
 
 		<p style="color: grey">
 			에브리데이에 처음이신가요? <a href="signup">회원가입</a>
@@ -144,7 +165,6 @@ a {
 		<a href="#">이용약관</a> <a href="#">개인정보처리방침</a> <a href="#">문의하기</a> <a
 			href="#"><span>&copy; 에브리데이</span></a>
 	</div>
-
 
 </body>
 </html>

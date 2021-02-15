@@ -254,6 +254,11 @@ textarea {
 	border-radius: 3px;
 }
 
+.unknown {
+	float: right;
+	padding: 12px;
+}
+
 .btn {
 	background-color: #c12525;
 	color: white;
@@ -262,6 +267,7 @@ textarea {
 	height: 45px;
 	float: right;
 	border: none;
+	margin-left: 10px;
 }
 
 .contents { /* border 겹치는 부분에 대한 css 더 효율적인 법?*/
@@ -387,7 +393,6 @@ span {
 			$(".new").hide();
 			$(".hide").show();
 		});
-
 	});
 </script>
 <link rel="stylesheet"
@@ -509,9 +514,13 @@ span {
 							<i class="fa fa-pencil" aria-hidden="true"
 								style="font-size: 23px; margin-left: 0; text-align: center;"></i>
 						</button>
-						<input type="text" name="writer" class="writer" value="익명" />
+						<div class="unknown">
+							<input type="checkbox" name="unknown" value="y" /> <label
+								for="unknown" style="font-size: 15px;">익명</label>
+						</div>
 
-
+						<input type="hidden" name="writer" id="writer"
+							value="${login.username}" />
 					</div>
 				</form>
 			</div>
@@ -524,7 +533,14 @@ span {
 						<p class="list-title">${u.title}</p>
 						<p class="list-content">${u.content}</p>
 						<p class="list-date">${u.regdate}</p>
-						<p class="list-writer">${u.writer}</p>
+						<c:choose>
+							<c:when test="${u.unknown eq 'y'}">
+								<p class="list-writer">익명</p>
+							</c:when>
+							<c:otherwise>
+								<p class="list-writer">${u.writer}</p>
+							</c:otherwise>
+						</c:choose>
 					</div>
 				</c:forEach>
 

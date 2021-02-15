@@ -8,6 +8,16 @@ public class CseeVO {
 	private String writer;
 	private String content;
 	private Date regdate;
+	private String unknown;
+
+	public String getUnknown() {
+		return unknown;
+	}
+
+	public void setUnknown(String unknown) {
+		this.unknown = unknown;
+	}
+
 	private int cnt;
 
 	public int getSeq() {
