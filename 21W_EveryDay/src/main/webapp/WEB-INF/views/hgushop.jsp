@@ -170,7 +170,7 @@ a {
 		</div>
 
 		<ul>
-			<li><a href="../main/csee">게시판</a></li>
+			<li><a href="main/csee">게시판</a></li>
 			<li><a href="#">시간표</a></li>
 			<li><a href="#">강의평가</a></li>
 			<li><a href="hgushop" class="here">HGU SHOP</a></li>
