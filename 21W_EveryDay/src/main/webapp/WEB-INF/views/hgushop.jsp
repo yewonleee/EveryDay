@@ -361,6 +361,8 @@ a {
 		        latlng: new kakao.maps.LatLng(36.02351776904121, 129.35641187729664)
 		    }
 		    
+		    //hgushop list 추
+		    
 		];
 
 		// 마커 이미지의 이미지 주소입니다
