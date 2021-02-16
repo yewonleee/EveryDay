@@ -234,7 +234,7 @@ a {
 			}
 		}
 
-		// gps 이용 가능 시, 위도와 경도를 반환하는 showlocation함수.
+		// gps 이용 가능 시, 위도와 경도를 반환하는 showlocation함수
 		function showLocation(position) {
 			gps_use = true;
 			gps_lat = position.coords.latitude;
