@@ -203,69 +203,187 @@ a {
 	<script>
 		var container = document.getElementById('map'); //지도를 표시할 div
 		var options = {
-			center : new kakao.maps.LatLng(36.10315425538241,
-					129.38842737437503), //지도 중심좌표 
+			center : new kakao.maps.LatLng(36.10315425538241, 129.38842737437503), //지도 중심좌표 36.10315425538241, 129.38842737437503
 			level : 3
 		//지도 확대 레벨 
 		};
 
 		var map = new kakao.maps.Map(container, options); //지도 생성
-	</script>
-	<script>
-		var gps_use = null; //gps의 사용가능 여부
-		var gps_lat = null; // 위도
-		var gps_lng = null; // 경도
-		var gps_position; // gps 위치 객체
+		
+		// 마커를 표시할 위치와 title 객체 배열입니다 
+		var positions = [
+		    {
+		        title: '달인의찜닭', 
+		        latlng: new kakao.maps.LatLng(36.08625859731515, 129.39695352628934)
+		    },
+		    
+		    {
+		        title: '동궁찜닭', 
+		        latlng: new kakao.maps.LatLng(36.082336361181014, 129.40244602445662)
+		    },
+		    
+		    {
+		        title: '서가앤쿡', 
+		        latlng: new kakao.maps.LatLng(36.079865084665954, 129.3970661686346)
+		    },
+		    
+		    {
+		        title: '신전떡볶이',
+		        latlng: new kakao.maps.LatLng(36.08880134131607, 129.39844769196185)
+		    },
+		    
+		    {
+		        title: '쌀통닭',
+		        latlng: new kakao.maps.LatLng(36.090980100633466, 129.40016417436124)
+		    },
+		    
+		    {
+		        title: '응급실떡볶이',
+		        latlng: new kakao.maps.LatLng(36.09978857356708, 129.38742368084135)
+		    },
+		    
+		    {
+		        title: '팜스발리',
+		        latlng: new kakao.maps.LatLng(36.102423867683996, 129.39151503979966)
+		    },
+		    
+		    {
+		        title: '인브리즈',
+		        latlng: new kakao.maps.LatLng(36.102491987684104, 129.39005761096394)
+		    },
+		    
+		    {
+		        title: '스고이라멘',
+		        latlng: new kakao.maps.LatLng(36.07888978526664, 129.40031962445653)
+		    },
+		    
+		    {
+		        title: '돌하르망 고기국수',
+		        latlng: new kakao.maps.LatLng(36.081929716503005, 129.40150545514152)
+		    },
+		    
+		    //커피숍
+		     {
+		        title: '그냥 커피주세요',
+		        latlng: new kakao.maps.LatLng(36.080093532015816, 129.39903087048398)
+		    },
+		    
+		    {
+		        title: '논스탠다드',
+		        latlng: new kakao.maps.LatLng(36.08187527505964, 129.39615327048392)
+		    },
+		    
+		    {
+		        title: '양덕동 마카롱',
+		        latlng: new kakao.maps.LatLng(36.08332933588813, 129.39772936873618)
+		    },
+		    
+		    {
+		        title: '히즈빈스랩',
+		        latlng: new kakao.maps.LatLng(36.08566114295732, 129.40430693258742)
+		    },
+		    
+		    {
+		        title: '헤이안',
+		        latlng: new kakao.maps.LatLng(36.064621738594184, 129.387321710963)
+		    },
+		    
+		    {
+		        title: '팜테이블',
+		        latlng: new kakao.maps.LatLng(36.06511306902965, 129.38637418212747)
+		    },
+		    
+		    //피트니스
+		    
+		    {
+		        title: '온리유짐',
+		        latlng: new kakao.maps.LatLng(36.08895939056074, 129.39057722445685)
+		    },
+		    
+		    {
+		        title: '디자인짐',
+		        latlng: new kakao.maps.LatLng(36.08175236719491, 129.39558775514138)
+		    },
+		    
+		    {
+		        title: '핏앤밸런스',
+		        latlng: new kakao.maps.LatLng(36.081039952461815, 129.39669474164825)
+		    },
+		    
+		    {
+		        title: '비다펠리즈 피트니스',
+		        latlng: new kakao.maps.LatLng()
+		    },
+		    
+		    //뷰티
+		    
+		    {
+		        title: '씨오씨 헤어',
+		        latlng: new kakao.maps.LatLng(36.08316660525675, 129.38113991096353)
+		    },
+		    
+		    {
+		        title: '이가자 헤어비스',
+		        latlng: new kakao.maps.LatLng(36.08789152119101, 129.3992937205191)
+		    },
+		    
+		    {
+		        title: '아담네일',
+		        latlng: new kakao.maps.LatLng(36.09138615218143, 129.3725898989546)
+		    },
+		    
+		    {
+		        title: '반가워 뷰티',
+		        latlng: new kakao.maps.LatLng(36.08462756564951, 129.39256228397713)
+		    },
+		    
+		    //의류
+		    
+		    {
+		        title: '심플핏',
+		        latlng: new kakao.maps.LatLng(36.103594553423164, 129.38573153979968)
+		    },
+		    
+		    //기타
+		    
+		    {
+		        title: '알파문구(양덕)',
+		        latlng: new kakao.maps.LatLng(36.082756317121564, 129.40160755155708)
+		    },
+		    
+		    {
+		        title: '원뮤직랩피아노',
+		        latlng: new kakao.maps.LatLng(36.084876369750035, 129.4057067336322)
+		    },
+		    
+		    {
+		        title: '아워야',
+		        latlng: new kakao.maps.LatLng(36.02351776904121, 129.35641187729664)
+		    }
+		    
+		];
 
-		gps_check();
-		// gps가 이용가능한지 체크하는 함수이며, 이용가능하다면 show location 함수를 불러온다.
-		// 만약 작동되지 않는다면 경고창을 띄우고, 에러가 있다면 errorHandler 함수를 불러온다.
-		// timeout을 통해 시간제한을 둔다.
-		function gps_check() {
-			if (navigator.geolocation) {
-				var options = {
-					timeout : 60000
-				};
-				navigator.geolocation.getCurrentPosition(showLocation,
-						errorHandler, options);
-			} else {
-				alert("GPS_추적이 불가합니다.");
-				gps_use = false;
-			}
+		// 마커 이미지의 이미지 주소입니다
+		var imageSrc = "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png"; 
+		//var imageSrc2 = "../img/placeholder.png"; 
+		    
+		for (var i = 0; i < positions.length; i ++) {
+		    
+		    // 마커 이미지의 이미지 크기 입니다
+		    var imageSize = new kakao.maps.Size(24, 35); 
+		    
+		    // 마커 이미지를 생성합니다    
+		    var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize); 
+		    
+		    // 마커를 생성합니다
+		    var marker = new kakao.maps.Marker({
+		        map: map, // 마커를 표시할 지도
+		        position: positions[i].latlng, // 마커를 표시할 위치
+		        title : positions[i].title, // 마커의 타이틀, 마커에 마우스를 올리면 타이틀이 표시됩니다
+		        image : markerImage // 마커 이미지 
+		    });
 		}
-
-		// gps 이용 가능 시, 위도와 경도를 반환하는 showlocation함수.
-		function showLocation(position) {
-			gps_use = true;
-			gps_lat = position.coords.latitude;
-			gps_lng = position.coords.longitude;
-		}
-
-		// error발생 시 에러의 종류를 알려주는 함수.
-		function errorHandler(error) {
-			if (error.code == 1) {
-				alert("접근차단");
-			} else if (err.code == 2) {
-				alert("위치를 반환할 수 없습니다.");
-			}
-			gps_use = false;
-		}
-
-		function gps_tracking() {
-			if (gps_use) {
-				map.panTo(new kakao.maps.LatLng(gps_lat, gps_lng));
-				var gps_content = '<div><img class="pulse" draggable="false" unselectable="on" src="https://ssl.pstatic.net/static/maps/m/pin_rd.png" alt=""></div>';
-				var currentOverlay = new kakao.maps.CustomOverlay({
-					position : new kakao.maps.LatLng(gps_lat, gps_lng),
-					content : gps_content,
-					map : map
-				});
-				currentOverlay.setMap(map);
-			} else {
-				alert("접근차단하신 경우 새로고침, 아닌 경우 잠시만 기다려주세요.");
-				gps_check();
-			}
-		}
+		
 	</script>
 	
 	<div class="footer">
