@@ -144,13 +144,13 @@ a {
 }
 </style>
 <script type="text/javascript"
-	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=APIKEY&libraries=LIBRARY"></script>
+	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=0cb23fe49032af8301a1a128a812a793&libraries=LIBRARY"></script>
 <!-- services 라이브러리 불러오기 -->
 <script type="text/javascript"
-	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=APIKEY&libraries=services"></script>
+	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=0cb23fe49032af8301a1a128a812a793&libraries=services"></script>
 <!-- services와 clusterer, drawing 라이브러리 불러오기 -->
 <script type="text/javascript"
-	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=APIKEY&libraries=services,clusterer,drawing"></script>
+	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=0cb23fe49032af8301a1a128a812a793&libraries=services,clusterer,drawing"></script>
 <link rel="stylesheet"
 	href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
 	integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN"
@@ -365,7 +365,10 @@ a {
 
 		// 마커 이미지의 이미지 주소입니다
 		var imageSrc = "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png"; 
-		//var imageSrc2 = "../img/placeholder.png"; 
+		//var imageSrc2 = new kakao.maps.MarkerImage("../img/favicon.ico", new kakao.maps.Size(30, 30),
+		//        {
+		//        }
+		//);
 		    
 		for (var i = 0; i < positions.length; i ++) {
 		    
