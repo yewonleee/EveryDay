@@ -361,7 +361,7 @@ a {
 		        latlng: new kakao.maps.LatLng(36.02351776904121, 129.35641187729664)
 		    }
 		    
-		    //hgushop list 추
+		    //hgushop list 추가
 		    
 		];
 
