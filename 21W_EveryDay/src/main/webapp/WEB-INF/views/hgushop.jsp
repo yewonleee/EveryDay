@@ -162,7 +162,7 @@ a {
 </head>
 <body>
 	<div class="header">
-		<!-- 상단 메뉴!!! -->
+		<!-- 상단 메뉴-->
 		<i class="fa fa-calendar" aria-hidden="true" style="font-size: 34px;"></i>
 		<div class="logo-side">
 			<p class="everytime">Everyday</p>
