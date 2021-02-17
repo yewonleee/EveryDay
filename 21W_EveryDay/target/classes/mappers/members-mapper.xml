@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Member">
+	<insert id="insertMember">
+		insert into members (userid, username, password, email)
+		values
+		(#{userid} , #{username} , #{password}, #{email})
+	</insert>
+	<update id="updateMember">
+		update members
+		set userid=#{userid},
+		username=#{username},
+		password=#{password}, 
+		email=#{email} where userid=#{userid}
+	</update>
+	<delete id="deleteMember">
+		delete from members where userid=#{userid}
+	</delete>
+	<select id="getMember" resultType="member">
+		select * from members where
+		userid=#{userid}
+	</select>
+
+	<!-- <select id="getMembersList" resultType="members"> select * from members 
+		order by seq desc </select> -->
+
+
+</mapper>
