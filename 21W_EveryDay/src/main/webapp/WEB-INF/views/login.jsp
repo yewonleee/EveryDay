@@ -110,11 +110,11 @@ a {
 <link rel="icon" href="../img/favicon.ico" type="image/x-icon">
 <!--favicon 설정 -->
 
-<!-- google signin api -->
-<script src="https://apis.google.com/js/platform.js?onload=init" async
-	defer></script>
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-
+<script src="https://apis.google.com/js/platform.js" async defer></script>
+<!-- load the Google platform library -->
+<meta name="google-signin-client_id"
+	content="614414049636-vmoicaro2j8pqts15mto327u6cm9p5u0.apps.googleusercontent.com">
 
 </head>
 <body>
@@ -135,18 +135,6 @@ a {
 			</div>
 			<button type='submit'>로그인</button>
 		</form>
-	<!-- 
-	<div id="google_id_login" style="text-align: center">
-			<a href="${google_url}" style="color: white;"><i
-				class="fa fa-google" aria-hidden="true"></i> Google Login</a>
-			<!-- <span style="color: white;" onclick="init();"><i
-				class="fa fa-google" aria-hidden="true"></i>Google Login</span> -->
-			<!-- button type="button" id="google_login" class="circle google"
-				onclick="initt()">
-				<i class="fa fa-google-plus fa-fw"></i>
-			</button> 
-		</div>
-	 -->
 
 		<form action="/connect/google" method="POST" style="display: inline">
 			<input type="hidden" name="scope" value="profile email" />

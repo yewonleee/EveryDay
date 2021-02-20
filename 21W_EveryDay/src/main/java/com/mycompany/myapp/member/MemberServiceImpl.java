@@ -7,13 +7,13 @@ import org.springframework.stereotype.Service;
 public class MemberServiceImpl {
 	@Autowired
 	MemberDAO memberDAO;
-	
+
 	public MemberVO getMember(MemberVO vo) {
 		return memberDAO.getMember(vo);
 	}
-	
+
 	public int insertMember(MemberVO vo) {
 		return memberDAO.insertMember(vo);
-	}
-	
+	}	
+
 }

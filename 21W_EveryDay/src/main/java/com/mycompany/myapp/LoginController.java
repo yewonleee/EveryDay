@@ -2,6 +2,7 @@ package com.mycompany.myapp;
 
 import java.io.IOException;
 
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -22,9 +23,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.mycompany.myapp.csee.CseeService;
+import com.mycompany.myapp.providers.GoogleProvider;
 import com.mycompany.myapp.member.MemberServiceImpl;
 import com.mycompany.myapp.member.MemberVO;
+
 
 @Controller
 @RequestMapping(value = "/login")
@@ -32,10 +34,12 @@ public class LoginController {
 
 	@Autowired
 	MemberServiceImpl service;
+	//@Autowired
+	//private GoogleConnectionFactory googleConnectionFactory;
+	//@Autowired
+	//private OAuth2Parameters googleOAuth2Parameters;
 	@Autowired
-	private GoogleConnectionFactory googleConnectionFactory;
-	@Autowired
-	private OAuth2Parameters googleOAuth2Parameters;
+	GoogleProvider googleProvider;
 
 	@RequestMapping(value = "/intro", method = RequestMethod.GET)
 	public String intro(String t, Model model) {
@@ -44,59 +48,13 @@ public class LoginController {
 
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public String login(String t, Model model) {
-
-		/* 구글code 발행 */
-		OAuth2Operations oauthOperations = googleConnectionFactory.getOAuthOperations();
-		String url = oauthOperations.buildAuthorizeUrl(GrantType.AUTHORIZATION_CODE, googleOAuth2Parameters);
-
-		System.out.println("구글:" + url);
-
-		model.addAttribute("google_url", url);
-
 		return "login";
 	}
 
-	// 구글 Callback호출 메소드
-	@RequestMapping(value = "/oauth2callback", method = RequestMethod.GET)
-	public String googleCallback(Model model, @RequestParam(required = false) HttpServletRequest request)
-			throws IOException {
 
-		System.out.println("여기는 googleCallback");
-		// 구글 login 정보에서 userid, email, nickname 가져오기
-		// member db에 저장
-		// setAttribute("login", loginvo);
-
-		/*
-		 String code = request.getParameter("code");
-
-		OAuth2Operations oauthOperations = googleConnectionFactory.getOAuthOperations();
-		AccessGrant accessGrant = oauthOperations.exchangeForAccess(code, googleOAuth2Parameters.getRedirectUri(),
-				null);
-
-		String accessToken = accessGrant.getAccessToken();
-		Long expireTime = accessGrant.getExpireTime();
-		if (expireTime != null && expireTime < System.currentTimeMillis()) {
-			accessToken = accessGrant.getRefreshToken();
-			System.out.printf("accessToken is expired. refresh token = {}", accessToken);
-		}
-		Connection<Google> connection = googleConnectionFactory.createConnection(accessGrant);
-		Google google = connection == null ? new GoogleTemplate(accessToken) : connection.getApi();
-
-		PlusOperations plusOperations = google.plusOperations();
-		Person profile = plusOperations.getGoogleProfile();
-		MemberVO loginvo = new MemberVO();
-		System.out.println(profile.getDisplayName());
-
-		loginvo.setEmail("email"); // 추가작업 필요
-		loginvo.setUsername(profile.getDisplayName());
-		loginvo.setUserid("g" + profile.getId());
-		HttpSession session = request.getSession();
-		//loginvo = service.googleLogin(loginvo);
-
-		session.setAttribute("login", loginvo);
-		
-		*/
-		return "redirect:/main/csee";
+	@RequestMapping(value = "/google", method = RequestMethod.GET)
+	public String loginToGoogle(Model model) {
+		return googleProvider.getGoogleUserData(model, new MemberVO());
 	}
 
 	@RequestMapping(value = "/signup", method = RequestMethod.GET)
