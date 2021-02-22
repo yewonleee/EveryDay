@@ -89,6 +89,12 @@ a {
 	padding-left: 2px;
 }
 
+.username {
+	position: fixed;
+	left: 75%;
+	padding: 5px;
+}
+
 .icons {
 	position: fixed;
 	top: 28px;
@@ -420,6 +426,10 @@ span {
 			<li><a href="#">책방</a></li>
 			<li><a href="#">캠퍼스픽</a></li>
 		</ul>
+
+		<p class="username">
+			<b>${login.username}</b> 님 안녕하세요!
+		</p>
 
 		<div class="icons">
 			<i class="fa fa-envelope-o icon" aria-hidden="true"></i>

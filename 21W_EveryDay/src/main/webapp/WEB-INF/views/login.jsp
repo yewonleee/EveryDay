@@ -136,12 +136,9 @@ a {
 			<button type='submit'>로그인</button>
 		</form>
 
-		<form action="/connect/google" method="POST" style="display: inline">
-			<input type="hidden" name="scope" value="profile email" />
-			<button type="submit" class="btn btn-danger">
-				Google <span class="fa fa-google-plus"></span>
-			</button>
-		</form>
+		<div class="google" id="googleLoginBtn">
+			<button>구글 로그인</button>
+		</div>
 
 		<p style="color: grey">
 			에브리데이에 처음이신가요? <a href="signup">회원가입</a>
@@ -153,6 +150,15 @@ a {
 		<a href="#">이용약관</a> <a href="#">개인정보처리방침</a> <a href="#">문의하기</a> <a
 			href="#"><span>&copy; 에브리데이</span></a>
 	</div>
-
 </body>
+<script>
+	const onClickGoogleLogin = function(e) {
+		//구글서버로 인증코드 발급 요청
+		window.location
+				.replace("https://accounts.google.com/o/oauth2/v2/auth?client_id=614414049636-vmoicaro2j8pqts15mto327u6cm9p5u0.apps.googleusercontent.com&redirect_uri=http://localhost:8080/myapp/login/oauth2callback&response_type=code&scope=email%20profile%20openid&access_type=offline");
+	}
+
+	const googleLoginBtn = document.getElementById("googleLoginBtn");
+	googleLoginBtn.addEventListener("click", onClickGoogleLogin);
+</script>
 </html>
