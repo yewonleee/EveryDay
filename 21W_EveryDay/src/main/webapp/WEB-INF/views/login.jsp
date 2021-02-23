@@ -137,7 +137,8 @@ a {
 		</form>
 
 		<div class="google" id="googleLoginBtn">
-			<button>구글 로그인</button>
+			<button> <i class="fa fa-google" aria-hidden="true"></i>
+			구글 로그인</button>
 		</div>
 
 		<p style="color: grey">
