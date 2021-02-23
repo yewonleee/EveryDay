@@ -423,7 +423,7 @@ span {
 			<li><a href="#">강의평가</a></li>
 			<li><a href="../hgushop">HGU SHOP</a></li>
 			<li><a href="#">친구</a></li>
-			<li><a href="#">책방</a></li>
+			<li><a href="../bookstore">책방</a></li>
 			<li><a href="#">캠퍼스픽</a></li>
 		</ul>
 

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Bookstore">
+
+	<insert id="insertBookstore">
+		insert into bookstore (title, writer, publisher, publicationDate, price, comment, underline, notes, cover, writingName, discoloration, damage)
+		values
+		(#{title} , #{writer} , #{publisher}, #{publicationDate}, #{price}, #{comment}, #{underline}, #{notes}, #{cover}, #{writingName}, #{discoloration}, #{damage})
+	</insert>
+	<update id="updateBookstore">
+		update bookstore
+		set title=#{title}, publisher=#{publisher},
+		writer=#{writer}, publicationDate=#{publicationDate}, price=#{price}, comment=#{comment}, underline=#{underline}, notes=#{notes}, cover=#{cover}, writingName=#{writingName}, discoloration=#{discoloration}, damage=#{damage} where seq=#{seq}
+	</update>
+	<delete id="deleteBookstore">
+		delete from bookstore where seq=#{seq}
+	</delete>
+	<select id="getBookstore" resultType="csee">
+		select * from bookstore where
+		seq=#{seq}
+	</select>
+	<select id="getBookstoreList" resultType="csee">
+		select * from bookstore order
+		by
+		seq desc
+	</select>
+</mapper>
