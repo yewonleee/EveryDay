@@ -126,7 +126,7 @@ public class LoginController {
 		return returnURL;
 	}
 	
-	@RequestMapping("/revoketoken") //토큰 무효화
+	@RequestMapping(value = "/revoketoken") //토큰 무효화
 	public Map<String, String> revokeToken(@RequestParam(value = "token") String token) throws JsonProcessingException {
 
 		Map<String, String> result = new HashMap<>();
@@ -138,7 +138,6 @@ public class LoginController {
 		result.put("result", "success");
 		result.put("resultJson", resultJson);
 		return result;
-
 	}
 
 	@RequestMapping(value = "/signup", method = RequestMethod.GET)
