@@ -14,6 +14,7 @@ public class BookstoreVO {
 	private String writingName;
 	private String discoloration;
 	private String damage;
+	private String photo;
 	
 	
 	public int getSeq() {
@@ -105,6 +106,13 @@ public class BookstoreVO {
 	}
 	public void setDamage(String damage) {
 		this.damage = damage;
+	}
+	//책사진
+	public String getPhoto() {
+		return photo;
+	}
+	public void setPhoto(String photo) {
+		this.photo = photo;
 	}
 	
 	

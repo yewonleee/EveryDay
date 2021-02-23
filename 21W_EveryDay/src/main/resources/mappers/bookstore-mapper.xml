@@ -3,23 +3,23 @@
 <mapper namespace="Bookstore">
 
 	<insert id="insertBookstore">
-		insert into bookstore (title, writer, publisher, publicationDate, price, comment, underline, notes, cover, writingName, discoloration, damage)
+		insert into bookstore (title, writer, publisher, publicationDate, price, comment, underline, notes, cover, writingName, discoloration, damage, photo)
 		values
-		(#{title} , #{writer} , #{publisher}, #{publicationDate}, #{price}, #{comment}, #{underline}, #{notes}, #{cover}, #{writingName}, #{discoloration}, #{damage})
+		(#{title} , #{writer} , #{publisher}, #{publicationDate}, #{price}, #{comment}, #{underline}, #{notes}, #{cover}, #{writingName}, #{discoloration}, #{damage}, #{photo})
 	</insert>
 	<update id="updateBookstore">
 		update bookstore
 		set title=#{title}, publisher=#{publisher},
-		writer=#{writer}, publicationDate=#{publicationDate}, price=#{price}, comment=#{comment}, underline=#{underline}, notes=#{notes}, cover=#{cover}, writingName=#{writingName}, discoloration=#{discoloration}, damage=#{damage} where seq=#{seq}
+		writer=#{writer}, publicationDate=#{publicationDate}, price=#{price}, comment=#{comment}, underline=#{underline}, notes=#{notes}, cover=#{cover}, writingName=#{writingName}, discoloration=#{discoloration}, damage=#{damage}, photo=#{photo} where seq=#{seq}
 	</update>
 	<delete id="deleteBookstore">
 		delete from bookstore where seq=#{seq}
 	</delete>
-	<select id="getBookstore" resultType="csee">
+	<select id="getBookstore" resultType="bookstore">
 		select * from bookstore where
 		seq=#{seq}
 	</select>
-	<select id="getBookstoreList" resultType="csee">
+	<select id="getBookstoreList" resultType="bookstore">
 		select * from bookstore order
 		by
 		seq desc

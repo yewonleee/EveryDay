@@ -4,6 +4,8 @@
   "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
 	<typeAliases>
+		<typeAlias alias="bookstore"
+			type="com.mycompany.myapp.bookstore.BookstoreVO" />
 		<typeAlias alias="csee"
 			type="com.mycompany.myapp.csee.CseeVO" />
 		<typeAlias alias="popular"
