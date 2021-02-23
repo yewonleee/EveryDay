@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -388,125 +390,123 @@ span {
 </head>
 <body>
 
-<h2>책방</h2>
-			<div class="new">
-				<p class="newpost">
-					책을 판매해보세요!<i class="fa fa-pencil" aria-hidden="true"></i>
-				</p>
+	<h2>책방</h2>
+	<div class="new">
+		<p class="newpost">
+			책을 판매해보세요!<i class="fa fa-pencil" aria-hidden="true"></i>
+		</p>
+	</div>
+
+
+	<div>
+
+		<!-- 작성 form -->
+
+		<form action="bookaddok" method="post">
+
+			<div>
+				<input type="text" name="title" placeholder="책 제목"
+					class="no-border title" />
 			</div>
 
-
-			<div >
-
-				<!-- 작성 form -->
-
-				<form action="bookaddok" method="post">
-					
-					<div>
-						<input type="text" name="title" placeholder="책 제목"
-						class="no-border title" />
-					</div>
-					
-					<div>
-						<input type="text" name="writer" placeholder="책 저자"
-						class="no-border title" />
-					</div>
-						
-					<div>
-						<input type="text" name="publisher" placeholder="출판사"
-						class="no-border title" />
-					</div>
-					
-					<div>
-						<input type="text" name="publicationDate" placeholder="출판일"
-						class="no-border title" />
-					</div>
-					
-					<div>
-						<input type="text" name="price" placeholder="판매가격"
-						class="no-border title" />
-					</div>
-
-					<div class="content">
-						<textarea name="comment" class="no-border"
-							placeholder="자세한 책 정보를 적어주세요.(사용한 수업 등,,)"></textarea>
-					</div>
-					
-					<p>밑줄 흔적이 있나요?</p>
-  					<input type="radio" id="nothing" name="underline" value="nothing">
-			  		<label for="nothing">nothing</label><br>
-					<input type="radio" id="pencil" name="underline" value="pencil">
-				 	<label for="pencil">pencil</label><br>
-					<input type="radio" id="highlight" name="underline" value="highlight">
-					<label for="highlight">highlight</label><br>
-					
-					<p>필기 흔적이 있나요?</p>
-  					<input type="radio" id="nothing" name="notes" value="nothing">
-			  		<label for="nothing">nothing</label><br>
-					<input type="radio" id="pencil" name="notes" value="pencil">
-				 	<label for="pencil">pencil</label><br>
-					<input type="radio" id="highlight" name="notes" value="highlight">
-					<label for="highlight">highlight</label><br>
-					
-					<p>보존 상태는 어떤가요? </p>
-					<p>겉표지</p>
-  					<input type="radio" id="clean" name="cover" value="clean">
-			  		<label for="clean">깨끗함</label><br>
-					<input type="radio" id="notclean" name="cover" value="notclean">
-				 	<label for="notclean">깨끗하지 않음</label><br>
-				 	
-				 	<p>이름기입</p>
-  					<input type="radio" id="clean" name="writingName" value="clean">
-			  		<label for="clean">없음</label><br>
-					<input type="radio" id="notclean" name="writingName" value="notclean">
-				 	<label for="notclean">있음</label><br>
-				 	
-				 	<p>페이지 변색</p>
-  					<input type="radio" id="clean" name="discoloration" value="clean">
-			  		<label for="clean">없음</label><br>
-					<input type="radio" id="notclean" name="discoloration" value="notclean">
-				 	<label for="notclean">있음</label><br>
-				 	
-				 	<p>페이지 훼손</p>
-  					<input type="radio" id="clean" name="damage" value="clean">
-			  		<label for="clean">없음</label><br>
-					<input type="radio" id="notclean" name="damage" value="notclean">
-				 	<label for="notclean">있음</label><br>
-
-					<div class="icons2">
-						<i class="fa fa-code icon2" aria-hidden="true"></i> <i
-							class="fa fa-upload icon2" aria-hidden="true"></i>
-
-						<button type="submit" class="btn submit">
-							<i class="fa fa-pencil" aria-hidden="true"
-								style="font-size: 23px; margin-left: 0; text-align: center;"></i>
-						</button>
-					</div>
-				</form>
+			<div>
+				<input type="text" name="writer" placeholder="책 저자"
+					class="no-border title" />
 			</div>
 
-			<div class="contents">
-				<!-- 게시글 list -->
-					<c:forEach items="${book}" var="u">
-					<div class="list" onclick="location.href='detail/${u.seq}'"
-						style="cursor: pointer;">
-						<p class="list-title">${u.title}</p>
-						<p class="list-content">${u.price}</p>
-						<p class="list-date">${u.regdate}</p>
-						<p class="list-writer">${u.comment}</p>
-					</div>
-				</c:forEach>
-				
-
+			<div>
+				<input type="text" name="publisher" placeholder="출판사"
+					class="no-border title" />
 			</div>
 
-			<div class="div-search">
-				<form id="searchForm" action="csee" method="get"
-					style="margin: 0; padding: 0">
-					<input type="text" placeholder="검색어를 입력하세요."
-						class="no-border search-bt" /> <input type="submit"
-						value="&#xf002;" class="search " />
-				</form>
+			<div>
+				<input type="text" name="publicationDate" placeholder="출판일"
+					class="no-border title" />
+			</div>
 
+			<div>
+				<input type="text" name="price" placeholder="판매가격"
+					class="no-border title" />
+			</div>
+
+			<div class="content">
+				<textarea name="comment" class="no-border"
+					placeholder="자세한 책 정보를 적어주세요.(사용한 수업 등,,)"></textarea>
+			</div>
+
+			<p>밑줄 흔적이 있나요?</p>
+			<input type="radio" id="nothing" name="underline" value="nothing">
+			<label for="nothing">nothing</label><br> <input type="radio"
+				id="pencil" name="underline" value="pencil"> <label
+				for="pencil">pencil</label><br> <input type="radio"
+				id="highlight" name="underline" value="highlight"> <label
+				for="highlight">highlight</label><br>
+
+			<p>필기 흔적이 있나요?</p>
+			<input type="radio" id="nothing" name="notes" value="nothing">
+			<label for="nothing">nothing</label><br> <input type="radio"
+				id="pencil" name="notes" value="pencil"> <label for="pencil">pencil</label><br>
+			<input type="radio" id="highlight" name="notes" value="highlight">
+			<label for="highlight">highlight</label><br>
+
+			<p>보존 상태는 어떤가요?</p>
+			<p>겉표지</p>
+			<input type="radio" id="clean" name="cover" value="clean"> <label
+				for="clean">깨끗함</label><br> <input type="radio" id="notclean"
+				name="cover" value="notclean"> <label for="notclean">깨끗하지
+				않음</label><br>
+
+			<p>이름기입</p>
+			<input type="radio" id="clean" name="writingName" value="clean">
+			<label for="clean">없음</label><br> <input type="radio"
+				id="notclean" name="writingName" value="notclean"> <label
+				for="notclean">있음</label><br>
+
+			<p>페이지 변색</p>
+			<input type="radio" id="clean" name="discoloration" value="clean">
+			<label for="clean">없음</label><br> <input type="radio"
+				id="notclean" name="discoloration" value="notclean"> <label
+				for="notclean">있음</label><br>
+
+			<p>페이지 훼손</p>
+			<input type="radio" id="clean" name="damage" value="clean"> <label
+				for="clean">없음</label><br> <input type="radio" id="notclean"
+				name="damage" value="notclean"> <label for="notclean">있음</label><br>
+
+			<div class="icons2">
+				<i class="fa fa-code icon2" aria-hidden="true"></i> <i
+					class="fa fa-upload icon2" aria-hidden="true"></i>
+
+				<button type="submit" class="btn submit">
+					<i class="fa fa-pencil" aria-hidden="true"
+						style="font-size: 23px; margin-left: 0; text-align: center;"></i>
+				</button>
+			</div>
+		</form>
+	</div>
+
+	<div class="contents">
+		<!-- 게시글 list -->
+		<c:forEach items="${bookstore}" var="u">
+			<div class="list" onclick="location.href='detail/${u.seq}'"
+				style="cursor: pointer;">
+				<p class="list-title">${u.title}</p>
+				<p class="list-content">${u.price}</p>
+				<p class="list-date">${u.publicationDate}</p>
+				<p class="list-writer">${u.comment}</p>
+			</div>
+		</c:forEach>
+
+
+	</div>
+
+	<div class="div-search">
+		<form id="searchForm" action="csee" method="get"
+			style="margin: 0; padding: 0">
+			<input type="text" placeholder="검색어를 입력하세요."
+				class="no-border search-bt" /> <input type="submit"
+				value="&#xf002;" class="search " />
+		</form>
+	</div>
 </body>
 </html>
