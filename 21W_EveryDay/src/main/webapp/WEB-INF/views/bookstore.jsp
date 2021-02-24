@@ -270,9 +270,9 @@ textarea {
 
 .list-photo {
 	float: left;
-    width: 80px;
-    height: 95px;
-    margin: 0;
+	width: 80px;
+	height: 95px;
+	margin: 0;
 }
 
 .list-title {
@@ -282,21 +282,21 @@ textarea {
 }
 
 .list-writer {
-	 margin: 0;
-	 font-size: 14px;
+	margin: 0;
+	font-size: 14px;
 }
 
 .list-publisher {
-	 margin: 0;
-	 font-size: 14px;
+	margin: 0;
+	font-size: 14px;
 }
 
 .list-price {
-	 margin: 0;
-	 color: #FF6347;
-	 font-size: 16px;
-	 font-weight: bold;
-	 width: 80%;
+	margin: 0;
+	color: #FF6347;
+	font-size: 16px;
+	font-weight: bold;
+	width: 80%;
 }
 
 .list_right {
@@ -304,11 +304,15 @@ textarea {
 	padding: 5px;
 }
 
+.wrinpub {
+	float: left;
+}
+
 .line {
 	border-left: 1px solid lightgrey;
-    height: 15px;
-    margin: 6px;
-    padding: 0;
+	height: 15px;
+	margin: 6px;
+	padding: 0;
 }
 
 .search {
@@ -527,9 +531,11 @@ span {
 						style="cursor: pointer;">
 						<p class="list-photo">${u.photo}</p>
 						<p class="list-title list_right">${u.title}</p>
-						<p class="list-writer list_right">${u.writer} 지음</p> 
-						<div class="line list_right"></div>
-						<p class="list-publisher list_right">${u.publisher}</p>
+						<div class="wrinpub">
+							<p class="list-writer list_right">${u.writer}지음</p>
+							<div class="line list_right"></div>
+							<p class="list-publisher list_right">${u.publisher}</p>
+						</div>
 						<p class="list-price list_right">${u.price}원</p>
 					</div>
 				</c:forEach>

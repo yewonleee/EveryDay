@@ -189,7 +189,7 @@ a {
 	margin: 10px;
 }
 
-.grey{
+.grey {
 	color: lightgrey;
 }
 
@@ -354,41 +354,37 @@ input[type="text"]:focus {
 				<h3 style="margin: 5px;">책 상태</h3>
 				<div class="set">
 					<p class="info_title">밑줄 흔적</p>
-					<p class="info_content grey under_no">없음</p>
-					<p class="info_content grey under_pencil">연필/샤프</p>
-					<p class="info_content  grey under_pen">볼펜/형광펜</p>
-					${u.underline}
+					<p class="info_content grey" id="under_no">없음</p>
+					<p class="info_content grey" id="under_pencil">연필/샤프</p>
+					<p class="info_content  grey" id="under_pen">볼펜/형광펜</p>
 				</div>
 				<div class="set">
 					<p class="info_title">필기 흔적</p>
-					<p class="info_content grey">없음</p>
-					<p class="info_content grey">연필/샤프</p>
-					<p class="info_content grey">볼펜/형광펜</p>
-					<p class="info_content grey">${u.notes}</p>
+					<p class="info_content grey" id="note_no">없음</p>
+					<p class="info_content grey" id="note_pencil">연필/샤프</p>
+					<p class="info_content grey" id="note_pen">볼펜/형광펜</p>
 				</div>
 				<div class="set">
 					<p class="info_title">겉표지</p>
-					<p class="info_content grey">깨끗함</p>
-					<p class="info_content grey">깨끗하지 않음</p>
-					<p class="info_content grey">${u.cover}</p>
+					<p class="info_content grey" id="clean">깨끗함</p>
+					<p class="info_content grey" id="dirty">깨끗하지 않음</p>
 				</div>
 				<div class="set">
 					<p class="info_title">이름 기입</p>
-					<p class="info_content grey">있음</p>
-					<p class="info_content grey">없음</p>
-					<p class="info_content grey">${u.writingName}</p>
+					<p class="info_content grey" id="name_yes">있음</p>
+					<p class="info_content grey" id="name_no">없음</p>
+					<p class="info_content grey"></p>
 				</div>
 				<div class="set">
 					<p class="info_title">페이지 변색</p>
-					<p class="info_content grey">있음</p>
-					<p class="info_content grey">없음</p>
-					<p class="info_content grey">${u.discoloration}</p>
+					<p class="info_content grey" id="color_yes">있음</p>
+					<p class="info_content grey" id="color_no">없음</p>
+
 				</div>
 				<div class="set">
 					<p class="info_title">페이지 훼손</p>
-					<p class="info_content grey">있음</p>
-					<p class="info_content grey">없음</p>
-					<p class="info_content grey">${u.damage}</p>
+					<p class="info_content grey" id="damage_yes">있음</p>
+					<p class="info_content grey" id="damage_no">없음</p>
 				</div>
 
 				<p class="info_content">${u.photo}</p>
@@ -419,4 +415,58 @@ input[type="text"]:focus {
 
 
 </body>
+<script>
+	var underline = "${u.underline}";
+	var notes = "${u.notes}";
+	var cover = "${u.cover}";
+	var writingName = "${u.writingName}";
+	var page = "${u.discoloration}";
+	var damage = "${u.damage}";
+	
+	if (underline == 'pencil') {
+		document.getElementById("under_pencil").style.color = "black"; //body 끝에 script를 놓아야 함!
+	}
+	if (underline == 'pen'){
+		document.getElementById("under_pen").style.color = "black";
+	}
+	if ((underline != 'pencil') && (underline != 'pen')){
+		document.getElementById("under_no").style.color = "black";
+	}
+
+	if (notes == 'pencil') {
+		document.getElementById("note_pencil").style.color = "black"; 
+	}
+	if (notes == 'pen'){
+		document.getElementById("note_pen").style.color = "black";
+	}
+	if ((notes != 'pencil') && (notes != 'pen')){
+		document.getElementById("note_no").style.color = "black";
+	}
+
+	if (cover == 'clean') {
+		document.getElementById("clean").style.color = "black"; 
+	} else {
+		document.getElementById("dirty").style.color = "black";
+	}
+
+	if (writingName == 'clean') {
+		document.getElementById("name_no").style.color = "black"; 
+	} else {
+		document.getElementById("name_yes").style.color = "black";
+	}
+
+	if (page == 'clean') {
+		document.getElementById("color_no").style.color = "black"; 
+	} else {
+		document.getElementById("color_yes").style.color = "black";
+	}
+	
+	if (damage == 'clean') {
+		document.getElementById("damage_no").style.color = "black"; 
+	} else {
+		document.getElementById("damage_yes").style.color = "black";
+	}
+	
+	
+</script>
 </html>
