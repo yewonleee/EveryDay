@@ -66,7 +66,7 @@ public class LoginController {
 		googleOAuthRequestParam.setClientId("614414049636-vmoicaro2j8pqts15mto327u6cm9p5u0.apps.googleusercontent.com");
 		googleOAuthRequestParam.setClientSecret("tcD5KS3cmZojZRHPwvoiS5Gy");
 		googleOAuthRequestParam.setCode(authCode);
-		googleOAuthRequestParam.setRedirectUri("http://localhost:8080/myapp/login/oauth2callback");
+		googleOAuthRequestParam.setRedirectUri("http://localhost:8080/myapp/login/oauth2callback"); // http://localhost:8080/myapp/login/oauth2callback // https://yewonproj.herokuapp.com/login/oauth2callback
 		googleOAuthRequestParam.setGrantType("authorization_code");
 
 		// JSON 파싱을 위한 기본값 세팅
