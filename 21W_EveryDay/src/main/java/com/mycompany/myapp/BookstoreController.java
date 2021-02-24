@@ -6,6 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.mycompany.myapp.bookstore.BookstoreService;
 import com.mycompany.myapp.bookstore.BookstoreVO;
@@ -31,7 +32,16 @@ public class BookstoreController {
 	}
 	
 	@RequestMapping(value = "/bookaddok", method = RequestMethod.POST)
-	public String addBookOK(BookstoreVO vo) {
+	public String addBookOK(BookstoreVO vo, MultipartFile[] file) {
+		for(int i=0; i<file.length; i++) {
+			System.out.println("================== file start ==================");
+			System.out.println("파일 이름: "+file[i].getName());
+			System.out.println("파일 실제 이름: "+file[i].getOriginalFilename());
+			System.out.println("파일 크기: "+file[i].getSize());
+			System.out.println("content type: "+file[i].getContentType());
+			System.out.println("================== file   END ==================");
+        }
+
 		if (bookstoreService.insertBookstore(vo) == 0)
 			System.out.println("책 정보 추가실패 ");
 		else
