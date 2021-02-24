@@ -120,47 +120,6 @@ a {
 	display: block;
 }
 
-.menu {
-	background-color: #F5F5F5;
-	height: 200px;
-	border-bottom: 1px solid lightgrey;
-	margin-bottom: 20px;
-	width: 100%;
-	text-align: center;
-}
-
-.menu-wrap {
-	display: inline-block;
-	text-align: center;
-	overflow: hidden;
-}
-
-.menu ul {
-	float: left;
-	list-style-type: none;
-	overflow: auto;
-	margin: 16px 90px 16px 15px;
-	padding-left: 0;
-}
-
-.menu li {
-	padding: 2px;
-	text-align: left;
-}
-
-.menu li a {
-	font-size: 13px;
-}
-
-.menu li a:hover {
-	color: #c12525;
-}
-
-.menu .here {
-	color: #c12525;
-	font-weight: bold;
-}
-
 .border {
 	border-left: 1px solid lightgrey;
 	float: left;
@@ -169,54 +128,69 @@ a {
 }
 
 .page-wrap {
-	min-height: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background-color: #f2f2f2;
 }
 
-.page-wrap:after {
-	content: "";
-	display: block;
+.container {
+	width: 800px;
+	font-size: 13px;
 }
 
-.left {
-	float: left;
-	width: 55%;
-	margin-left: 13%;
+.top {
+	background-color: white;
+	padding: 10px;
+	margin: 10px;
 }
 
-h2 {
-	border: 1px solid lightgrey;
-	padding: 15px;
-	margin: 5px 0;
+.set {
+	display: flex;
+	margin: 5px;
 }
 
-.post {
-	border: 1px solid lightgrey;
-	padding: 15px;
+.info_title {
+	color: grey;
+	width: 65px;
+	font-size: 13px;
+	margin: 0;
 }
 
-.fa-user {
-	float: left;
-	background: lightgrey;
-	border-radius: 3px;
-	color: white;
+.info_content {
+	margin: 0;
+	padding-right: 10px;
+}
+
+.price {
+	color: #FF6347;
+	font-size: 20px;
+	font-weight: bold;
+	margin: 5px;
+}
+
+.middle {
+	background-color: white;
+	padding: 10px;
+	margin: 10px;
+}
+
+.cmt {
+	background-color: #f2f2f2;
+	height: 30px;
+	border-radius: 5px;
+	margin: 5px;
 	padding: 5px;
 }
 
-.info {
-	float: left;
-	margin: 0 0 15px 5px;
+.bottom {
+	background-color: white;
+	padding: 10px;
+	margin: 10px;
 }
 
-.writer {
-	font-weight: bold;
-	font-size: 14px;
-	margin: 2px;
-}
-
-.regdate {
+.grey{
 	color: lightgrey;
-	font-size: 13px;
-	margin: 2px;
 }
 
 .action {
@@ -276,40 +250,6 @@ input[type="text"]:focus {
 	margin: 5px;
 }
 
-.right { /*오른쪽 메뉴*/
-	width: 25%;
-	float: left;
-}
-
-.boxes {
-	border: 1px solid lightgrey;
-	background-color: #F8F8F8;
-	margin: 5px 20px;
-}
-
-.boxes .title {
-	font-weight: bold;
-	color: #0000CD;
-	font-size: 14px;
-	margin: 15px;
-}
-
-.content {
-	border-top: 1px solid lightgrey;
-	padding: 15px;
-	font-size: 13px;
-	height: 30px;
-}
-
-.popular .content {
-	height: 30px;
-}
-
-.hot .content {
-	padding-left: 15px;
-	height: 5px;
-}
-
 .footer {
 	float: left;
 	margin-left: 35%;
@@ -337,9 +277,13 @@ input[type="text"]:focus {
 	function delete_ok(id) {
 		var a = confirm("정말 삭제하시겠습니까?");
 		if (a)
-			location.href = '../deleteok/' + id;
+			location.href = '../deletebookok/' + id;
 	}
 </script>
+<link rel=" shortcut icon" href="../img/favicon.ico" type="image/x-icon">
+<!--favicon 설정 -->
+<link rel="icon" href="../img/favicon.ico" type="image/x-icon">
+<!--favicon 설정 -->
 <link rel="stylesheet"
 	href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
 	integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN"
@@ -360,12 +304,12 @@ input[type="text"]:focus {
 		</div>
 
 		<ul>
-			<li><a href="../csee" class="here">게시판</a></li>
+			<li><a href="main/csee">게시판</a></li>
 			<li><a href="#">시간표</a></li>
 			<li><a href="#">강의평가</a></li>
-			<li><a href="../hgushop">HGU SHOP</a></li>
+			<li><a href="hgushop">HGU SHOP</a></li>
 			<li><a href="#">친구</a></li>
-			<li><a href="#">책방</a></li>
+			<li><a href="../bookstore" class="here">책방</a></li>
 			<li><a href="#">캠퍼스픽</a></li>
 		</ul>
 
@@ -379,123 +323,91 @@ input[type="text"]:focus {
 		</div>
 	</div>
 
-	<div class="menu">
-		<div class="menu-wrap">
-			<div class="border"></div>
-			<ul>
-				<li><a href="../csee" class="here">자유게시판</a></li>
-				<li><a href="#">비밀게시판</a></li>
-				<li><a href="#">졸업생게시판</a></li>
-				<li><a href="#">새내기게시판</a></li>
-				<li><a href="#">장터게시판</a></li>
-				<li><a href="#">홍보게시판</a></li>
-				<li><a href="#">동아리/학회</a></li>
-			</ul>
-			<div class="border"></div>
-			<ul>
-				<li><a href="#">정보게시판</a></li>
-				<li><a href="#">취업/진로</a></li>
-			</ul>
-			<div class="border"></div>
-			<ul>
-				<li><a href="#">게시판</a></li>
-				<li><a href="#">게시판</a></li>
-				<li><a href="#">게시판</a></li>
-				<li><a href="#">게시판</a></li>
-				<li><a href="#">게시판</a></li>
-				<li><a href="#">게시판</a></li>
-				<li><a href="#">게시판</a></li>
-			</ul>
-			<ul>
-				<li><a href="#">게시판</a></li>
-				<li><a href="#">게시판</a></li>
-				<li><a href="#">게시판</a></li>
-				<li><a href="#">게시판</a></li>
-				<li><a href="#">게시판</a></li>
-				<li><a href="#">게시판</a></li>
-				<li><a href="#">게시판</a></li>
-			</ul>
-			<ul>
-				<li><a href="#">게시판</a></li>
-				<li><a href="#">게시판</a></li>
-				<li><a href="#">게시판</a></li>
-				<li><a href="#">게시판</a></li>
-				<li><a href="#">게시판</a></li>
-				<li><a href="#">게시판</a></li>
-				<li><a href="#">게시판</a></li>
-			</ul>
-			<div class="border"></div>
-		</div>
-	</div>
-
-
 	<div class="page-wrap">
-		<div class="left">
-			<!-- 왼쪽 게시글 작성form & 게시글 list -->
-			<h2>자유게시판</h2>
-
-			<div class="post">
-				<input type="hidden" name="seq" value="${u.seq}" /> <span><i
-					class="fa fa-user fa-2x" aria-hidden="true"></i></span>
-				<div class="info">
-					<p class="writer">${u.writer}</p>
-					<p class="regdate">${u.regdate}</p>
+		<div class="container">
+			<input type="hidden" name="seq" value="${u.seq}" />
+			<div class="top">
+				<h3 style="font-size: 18px; margin: 7px 5px;">${u.title}</h3>
+				<div class="set">
+					<p class="info_title">저자</p>
+					<p class="info_content">${u.writer}</p>
+				</div>
+				<div class="set">
+					<p class="info_title">출판사</p>
+					<p class="info_content">${u.publisher}</p>
+				</div>
+				<div class="set">
+					<p class="info_title">출판일</p>
+					<p class="info_content">${u.publicationDate}</p>
 				</div>
 
+				<p class="price">${u.price}원</p>
+
+			</div>
+
+			<div class="middle">
+				<h3 style="margin: 5px;">판매자의 말</h3>
+				<p class="cmt">${u.comment}</p>
+			</div>
+
+			<div class="bottom">
+				<h3 style="margin: 5px;">책 상태</h3>
+				<div class="set">
+					<p class="info_title">밑줄 흔적</p>
+					<p class="info_content grey under_no">없음</p>
+					<p class="info_content grey under_pencil">연필/샤프</p>
+					<p class="info_content  grey under_pen">볼펜/형광펜</p>
+					${u.underline}
+				</div>
+				<div class="set">
+					<p class="info_title">필기 흔적</p>
+					<p class="info_content grey">없음</p>
+					<p class="info_content grey">연필/샤프</p>
+					<p class="info_content grey">볼펜/형광펜</p>
+					<p class="info_content grey">${u.notes}</p>
+				</div>
+				<div class="set">
+					<p class="info_title">겉표지</p>
+					<p class="info_content grey">깨끗함</p>
+					<p class="info_content grey">깨끗하지 않음</p>
+					<p class="info_content grey">${u.cover}</p>
+				</div>
+				<div class="set">
+					<p class="info_title">이름 기입</p>
+					<p class="info_content grey">있음</p>
+					<p class="info_content grey">없음</p>
+					<p class="info_content grey">${u.writingName}</p>
+				</div>
+				<div class="set">
+					<p class="info_title">페이지 변색</p>
+					<p class="info_content grey">있음</p>
+					<p class="info_content grey">없음</p>
+					<p class="info_content grey">${u.discoloration}</p>
+				</div>
+				<div class="set">
+					<p class="info_title">페이지 훼손</p>
+					<p class="info_content grey">있음</p>
+					<p class="info_content grey">없음</p>
+					<p class="info_content grey">${u.damage}</p>
+				</div>
+
+				<p class="info_content">${u.photo}</p>
+			</div>
+
+			<div class="post">
 				<div class="action">
 					<a href="../editform/${u.seq}">수정</a> <a
 						href="javascript:delete_ok('${u.seq}')">삭제</a>
 				</div>
-				<div style="clear: left;">
-					<p class="post-title">${u.title}</p>
-					<p style="font-size: 14px;">${u.content}</p>
-				</div>
-
-			</div>
-			<div class="reply">
-				<input type="text" name="reply" placeholder="댓글을 입력하세요." />
-				<button type="submit" class="btn submit">
-					<i class="fa fa-pencil fa-2x" aria-hidden="true"
-						style="argin-left: 0;"></i>
-				</button>
 			</div>
 
-			<button type="button" class="back" onclick="location.href='../csee' ">
-				<i class="fa fa-list" aria-hidden="true" style="margin: 5px;"></i>글
+			<button type="button" class="back"
+				onclick="location.href='../bookstore' ">
+				<i class="fa fa-list" aria-hidden="true" style="margin: 5px;"></i>책
 				목록
 			</button>
 		</div>
-
-		<div class="right">
-			<div class="boxes popular">
-				<p class="title">실시간 인기 글</p>
-				<p class="content">이곳은 실시간 인기 첫 번째 글입니다. 안녕하세요</p>
-				<p class="content">이곳은 실시간 인기 두 번째 글입니다.</p>
-			</div>
-
-			<div class="boxes hot">
-				<p class="title">HOT 게시물</p>
-				<p class="content">이곳은 HOT 게시물 첫 번째 글입니다.</p>
-				<p class="content">이곳은 HOT 게시물 두 번째 글입니다.</p>
-				<p class="content">이곳은 HOT 게시물 세 번째 글입니다.</p>
-				<p class="content">이곳은 HOT 게시물 네 번째 글입니다.</p>
-			</div>
-
-			<div class="boxes">
-				<p class="title">BEST 게시판</p>
-			</div>
-
-			<div class="boxes">
-				<p class="title">최근 강의평</p>
-				<p class="content"></p>
-				<p class="content"></p>
-				<p class="content"></p>
-				<p class="content"></p>
-			</div>
-		</div>
 	</div>
-
-
 
 	<div class="footer">
 		<a href="#">이용약관</a> <a href="#">개인정보처리방침</a> <a href="#">커뮤니티이용규칙</a>

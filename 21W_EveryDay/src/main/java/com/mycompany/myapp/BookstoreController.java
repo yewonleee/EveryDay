@@ -38,4 +38,13 @@ public class BookstoreController {
 			System.out.println("책 정보 추가 성공!!!");
 		return "redirect:bookstore";
 	}
+	
+	@RequestMapping(value = "/deletebookok/{id}", method = RequestMethod.GET)
+	public String deletePostOK(@PathVariable("id") int id) {
+		if (bookstoreService.deleteBookstore(id) == 0)
+			System.out.println("데이터 삭제 실패 ");
+		else
+			System.out.println("데이터 삭제 성공!!!");
+		return "redirect:../bookstore";
+	}
 }
