@@ -537,13 +537,20 @@ span {
 
 			<div class="contents">
 				<!-- 게시글 list -->
-				<c:forEach items="${bookstore}" var="u">
+				<c:forEach items="${list}" var="u">
 					<div class="list" onclick="location.href='detail/${u.seq}'"
 						style="cursor: pointer;">
 						<p class="list-title">${u.title}</p>
-						<p class="list-content">${u.price}</p>
+						<p class="list-content">${u.content}</p>
 						<p class="list-date">${u.regdate}</p>
-						<p class="list-writer">${u.comment}</p>
+						<c:choose>
+							<c:when test="${u.unknown eq 'y'}">
+								<p class="list-writer">익명</p>
+							</c:when>
+							<c:otherwise>
+								<p class="list-writer">${u.writer}</p>
+							</c:otherwise>
+						</c:choose>
 					</div>
 				</c:forEach>
 
