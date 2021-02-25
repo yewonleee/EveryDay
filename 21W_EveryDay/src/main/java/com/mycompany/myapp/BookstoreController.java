@@ -1,12 +1,18 @@
 package com.mycompany.myapp;
 
+import java.io.File;
+import java.io.IOException;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.mycompany.myapp.bookstore.BookstoreService;
 import com.mycompany.myapp.bookstore.BookstoreVO;
@@ -32,15 +38,35 @@ public class BookstoreController {
 	}
 	
 	@RequestMapping(value = "/bookaddok", method = RequestMethod.POST)
-	public String addBookOK(BookstoreVO vo, MultipartFile[] file) {
-		for(int i=0; i<file.length; i++) {
-			System.out.println("================== file start ==================");
-			System.out.println("파일 이름: "+file[i].getName());
-			System.out.println("파일 실제 이름: "+file[i].getOriginalFilename());
-			System.out.println("파일 크기: "+file[i].getSize());
-			System.out.println("content type: "+file[i].getContentType());
-			System.out.println("================== file   END ==================");
-        }
+	public String addBookOK(BookstoreVO vo, MultipartHttpServletRequest mtf, ModelAndView mav) throws Exception {
+		
+		// 파일 태그 name
+		  String fileTag = "file";
+
+		// 업로드 파일이 저장될 경로
+		  String filePath = "/Users/mac/git/EveryDay/21W_EveryDay/src/main/webapp/resources/img";
+		  
+		// 파일 얻기
+		  MultipartFile file = mtf.getFile(fileTag);
+		  System.out.println(file);
+		  
+		  if(file.isEmpty()) {
+			  	// 파일 업로드 하지 않은 경우 처리
+		  }else {
+			  
+			  	String fileName = file.getOriginalFilename();
+			  	File target = new File(filePath, fileName);
+			  	FileCopyUtils.copy(file.getBytes(), target);
+			  	
+			  	//mav.setViewName
+			  	System.out.println(fileName);
+
+			  	try {
+			    	// 파일 업로드 처리
+			    } catch(Exception e) {
+			    	// 오류 발생 
+			    }
+		}
 
 		if (bookstoreService.insertBookstore(vo) == 0)
 			System.out.println("책 정보 추가실패 ");

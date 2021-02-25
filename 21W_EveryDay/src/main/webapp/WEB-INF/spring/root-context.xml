@@ -40,4 +40,8 @@
          <property name="defaultEncoding" value="utf-8" />
 
 	</bean>
+	
+	  <bean id="uploadPath" class="java.lang.String">
+    	<constructor-arg value="/Users/mac/git/EveryDay/21W_EveryDay/src/main/webapp/resources/img"/>
+  	</bean>
 </beans>

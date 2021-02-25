@@ -444,7 +444,7 @@ span {
 
 			<div class="hide">
 
-				<form action="bookaddok" method="post">
+				<form action="bookaddok" method="post" enctype="multipart/form-data">
 					<div class="info">
 						<p class="info-title" style="color: black;">자세한 책 정보를 적어주세요.</p>
 						<div>
@@ -518,6 +518,9 @@ span {
 						<div class="title title_check">
 							<input type="checkbox" name="damage" value="clean"> <label
 								for="nodamage">페이지 훼손 없음</label>
+						</div>
+						<div class="title title_check">
+							<input type="file" name="file"/>
 						</div>
 						<button type="submit" class="btn_next">등록</button>
 					</div>
