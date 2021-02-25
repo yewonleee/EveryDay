@@ -387,7 +387,7 @@ input[type="text"]:focus {
 					<p class="info_content grey" id="damage_no">없음</p>
 				</div>
 
-				<p class="info_content">${u.photo}</p>
+				<p class="list-photo"><img src="${pageContext.request.contextPath}/resources/img/${u.photo}" width=100, height=120></p>
 			</div>
 
 			<div class="post">

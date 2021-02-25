@@ -520,7 +520,7 @@ span {
 								for="nodamage">페이지 훼손 없음</label>
 						</div>
 						<div class="title title_check">
-							<input type="file" name="file"/>
+							<input type="file" name="uploadFile"/>
 						</div>
 						<button type="submit" class="btn_next">등록</button>
 					</div>
@@ -532,7 +532,7 @@ span {
 				<c:forEach items="${bookstore}" var="u">
 					<div class="list" onclick="location.href='bookdetail/${u.seq}'"
 						style="cursor: pointer;">
-						<p class="list-photo">${u.photo}</p>
+						<p class="list-photo"><img src="${pageContext.request.contextPath}/resources/img/${u.photo}" width=70, height=75></p>
 						<p class="list-title list_right">${u.title}</p>
 						<div class="wrinpub">
 							<p class="list-writer list_right">${u.writer}지음</p>

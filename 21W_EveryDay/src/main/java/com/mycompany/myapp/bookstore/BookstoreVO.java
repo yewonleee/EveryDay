@@ -1,5 +1,7 @@
 package com.mycompany.myapp.bookstore;
 
+import org.springframework.web.multipart.MultipartFile;
+
 public class BookstoreVO {
 	private int seq;
 	private String title;
@@ -15,6 +17,7 @@ public class BookstoreVO {
 	private String discoloration;
 	private String damage;
 	private String photo;
+	private MultipartFile uploadFile;
 	
 	
 	public int getSeq() {
@@ -113,6 +116,13 @@ public class BookstoreVO {
 	}
 	public void setPhoto(String photo) {
 		this.photo = photo;
+	}
+	public MultipartFile getUploadFile() {
+		// TODO Auto-generated method stub
+		return uploadFile;
+	}
+	public void setUploadFile(MultipartFile uploadFile) {
+		this.uploadFile = uploadFile;
 	}
 	
 	

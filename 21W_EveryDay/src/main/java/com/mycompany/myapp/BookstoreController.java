@@ -2,7 +2,9 @@ package com.mycompany.myapp;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.UUID;
 
+import org.apache.commons.io.FilenameUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -40,6 +42,23 @@ public class BookstoreController {
 	@RequestMapping(value = "/bookaddok", method = RequestMethod.POST)
 	public String addBookOK(BookstoreVO vo, MultipartHttpServletRequest mtf, ModelAndView mav) throws Exception {
 		
+		String fileName=null;
+		MultipartFile uploadFile = vo.getUploadFile();
+		//System.out.println(uploadFile);
+		
+		if (!uploadFile.isEmpty()) {
+			String originalFileName = uploadFile.getOriginalFilename();
+			String ext = FilenameUtils.getExtension(originalFileName);	//확장자 구하기
+			UUID uuid = UUID.randomUUID();	//UUID 구하기
+			fileName = uuid+"."+ext;
+			uploadFile.transferTo(new File("/Users/mac/git/EveryDay/21W_EveryDay/src/main/webapp/resources/img/" + fileName));
+			//System.out.println(uploadFile);
+		}
+		vo.setPhoto(fileName);
+		//bookstoreService.insertBookstore(vo);  //db에 저장
+		
+		/*
+		
 		// 파일 태그 name
 		  String fileTag = "file";
 
@@ -66,7 +85,7 @@ public class BookstoreController {
 			    } catch(Exception e) {
 			    	// 오류 발생 
 			    }
-		}
+		}*/
 
 		if (bookstoreService.insertBookstore(vo) == 0)
 			System.out.println("책 정보 추가실패 ");
