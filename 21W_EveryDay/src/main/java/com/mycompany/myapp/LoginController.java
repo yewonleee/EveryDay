@@ -15,6 +15,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.client.RestTemplate;
+import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import org.springframework.web.servlet.view.RedirectView;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
@@ -52,6 +55,12 @@ public class LoginController {
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public String login(String t, Model model, HttpServletResponse response) {
 		return "login";
+	}
+	
+	@RequestMapping(value = "/google", method = RequestMethod.GET)
+	public String google(RedirectAttributes rttr, Model model) {
+		String url = "redirect:https://accounts.google.com/o/oauth2/v2/auth?client_id=614414049636-vmoicaro2j8pqts15mto327u6cm9p5u0.apps.googleusercontent.com&redirect_uri=http://localhost:8080/myapp/login/oauth2callback&response_type=code&scope=email%20profile%20openid&access_type=offline";
+		return url;
 	}
 
 	@RequestMapping(value = "/oauth2callback", method = RequestMethod.GET)
