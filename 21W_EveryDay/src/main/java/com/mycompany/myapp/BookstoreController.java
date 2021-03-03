@@ -4,6 +4,8 @@ import java.io.File;
 import java.io.IOException;
 import java.util.UUID;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.apache.commons.io.FilenameUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -40,19 +42,19 @@ public class BookstoreController {
 	}
 	
 	@RequestMapping(value = "/bookaddok", method = RequestMethod.POST)
-	public String addBookOK(BookstoreVO vo, MultipartHttpServletRequest mtf, ModelAndView mav) throws Exception {
+	public String addBookOK(BookstoreVO vo, MultipartHttpServletRequest mtf, ModelAndView mav, HttpServletRequest request) throws Exception {
 		
 		String fileName=null;
 		MultipartFile uploadFile = vo.getUploadFile();
-		//System.out.println(uploadFile);
-		
+
+		String context = request.getSession().getServletContext().getRealPath("/"); //사용자의 웹 어플리케이션 경로 구하기
 		if (!uploadFile.isEmpty()) {
 			String originalFileName = uploadFile.getOriginalFilename();
 			String ext = FilenameUtils.getExtension(originalFileName);	//확장자 구하기
 			UUID uuid = UUID.randomUUID();	//UUID 구하기
 			fileName = uuid+"."+ext;
-			uploadFile.transferTo(new File("/Users/mac/git/EveryDay/21W_EveryDay/src/main/webapp/resources/img/" + fileName));
-			//System.out.println(uploadFile);
+			System.out.println(context + "/resources/img/" + fileName);
+			uploadFile.transferTo(new File(context + "/resources/img/" + fileName));
 		}
 		vo.setPhoto(fileName);
 		//bookstoreService.insertBookstore(vo);  //db에 저장
