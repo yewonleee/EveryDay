@@ -47,14 +47,15 @@ public class BookstoreController {
 		String fileName=null;
 		MultipartFile uploadFile = vo.getUploadFile();
 
-		String context = request.getSession().getServletContext().getRealPath("/"); //사용자의 웹 어플리케이션 경로 구하기
+		String context = request.getSession().getServletContext().getRealPath("/resources/img/"); //서버에 저장되는 path 
+		//String context = "/Users/yewon/git/EveryDay/21W_EveryDay/src/main/webapp/resources/img";
 		if (!uploadFile.isEmpty()) {
 			String originalFileName = uploadFile.getOriginalFilename();
 			String ext = FilenameUtils.getExtension(originalFileName);	//확장자 구하기
 			UUID uuid = UUID.randomUUID();	//UUID 구하기
 			fileName = uuid+"."+ext;
-			System.out.println(context + "/resources/img/" + fileName);
-			uploadFile.transferTo(new File(context + "/resources/img/" + fileName));
+			System.out.println(context + fileName);
+			uploadFile.transferTo(new File(context + fileName));
 		}
 		vo.setPhoto(fileName);
 		//bookstoreService.insertBookstore(vo);  //db에 저장

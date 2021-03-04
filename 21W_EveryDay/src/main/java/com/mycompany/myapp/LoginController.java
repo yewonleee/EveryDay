@@ -60,12 +60,13 @@ public class LoginController {
 	@RequestMapping(value = "/google", method = RequestMethod.GET)
 	public String google(RedirectAttributes rttr, Model model) {
 		String url = "redirect:https://accounts.google.com/o/oauth2/v2/auth?client_id=614414049636-vmoicaro2j8pqts15mto327u6cm9p5u0.apps.googleusercontent.com&redirect_uri=http://localhost:8080/myapp/login/oauth2callback&response_type=code&scope=email%20profile%20openid&access_type=offline";
+		// http://localhost:8080/myapp/login/oauth2callback // https://yewonproj.herokuapp.com/login/oauth2callback // http://walab.handong.edu:8080/everyday/login/oauth2callback
 		return url;
 	}
 
 	@RequestMapping(value = "/oauth2callback", method = RequestMethod.GET)
 	public String googleAuth(Model model, @RequestParam(value = "code") String authCode, HttpServletRequest request,
-			HttpSession session, MemberVO vo) throws Exception {
+			HttpSession session, MemberVO vo, RedirectAttributes redirectAttributes) throws Exception {
 
 		// HTTP Request를 위한 RestTemplate
 		RestTemplate restTemplate = new RestTemplate();
@@ -75,7 +76,8 @@ public class LoginController {
 		googleOAuthRequestParam.setClientId("614414049636-vmoicaro2j8pqts15mto327u6cm9p5u0.apps.googleusercontent.com");
 		googleOAuthRequestParam.setClientSecret("tcD5KS3cmZojZRHPwvoiS5Gy");
 		googleOAuthRequestParam.setCode(authCode);
-		googleOAuthRequestParam.setRedirectUri("http://localhost:8080/myapp/login/oauth2callback"); // http://localhost:8080/myapp/login/oauth2callback // https://yewonproj.herokuapp.com/login/oauth2callback
+		googleOAuthRequestParam.setRedirectUri("http://localhost:8080/myapp/login/oauth2callback"); 
+		// http://localhost:8080/myapp/login/oauth2callback // https://yewonproj.herokuapp.com/login/oauth2callback // http://walab.handong.edu:8080/everyday/login/oauth2callback
 		googleOAuthRequestParam.setGrantType("authorization_code");
 
 		// JSON 파싱을 위한 기본값 세팅
@@ -119,6 +121,7 @@ public class LoginController {
 		if (loginvo != null) { // 로그인 성공. 이미 구글 id로 db에 저장됨
 			System.out.println("구글 ID로 로그인 성공!");
 			session.setAttribute("login", loginvo);
+			//redirectAttributes.addFlashAttribute("name","redirect:/main/csee");
 			returnURL = "redirect:/main/csee";
 		} else { // 로그인 실패
 			System.out.println("구글 정보가 DB에 저장 안되어있음!");
@@ -133,6 +136,13 @@ public class LoginController {
 			}
 		}
 		return returnURL;
+	}
+	
+	@RequestMapping(value = "/redirected", method = RequestMethod.GET)
+	public String googleRedirect(Model model) {
+		//String r_name = (String)model.asMap().get("name");
+		return "redirect:/main/csee";
+		
 	}
 	
 	@RequestMapping(value = "/revoketoken") //토큰 무효화

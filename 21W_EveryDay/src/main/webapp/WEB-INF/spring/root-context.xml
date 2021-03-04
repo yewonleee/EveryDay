@@ -42,6 +42,6 @@
 	</bean>
 	
 	  <bean id="uploadPath" class="java.lang.String">
-    	<constructor-arg value="/Users/mac/git/EveryDay/21W_EveryDay/src/main/webapp/resources/img"/>
+    	<constructor-arg value="/Users/yewon/Documents/workspace-spring-tool-suite-4-4.8.0.RELEASE/Hello/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/21W_EveryDay/resources/img"/>
   	</bean>
 </beans>
