@@ -48,7 +48,8 @@ public class BookstoreController {
 		MultipartFile uploadFile = vo.getUploadFile();
 
 		String context = request.getSession().getServletContext().getRealPath("/resources/img/"); //서버에 저장되는 path 
-		//String context = "/Users/yewon/git/EveryDay/21W_EveryDay/src/main/webapp/resources/img";
+		
+		//if문 --> 폴더 생성해주기
 		if (!uploadFile.isEmpty()) {
 			String originalFileName = uploadFile.getOriginalFilename();
 			String ext = FilenameUtils.getExtension(originalFileName);	//확장자 구하기

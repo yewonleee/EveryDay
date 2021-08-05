@@ -15,9 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.client.RestTemplate;
-import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-import org.springframework.web.servlet.view.RedirectView;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
@@ -58,8 +56,8 @@ public class LoginController {
 	}
 	
 	@RequestMapping(value = "/google", method = RequestMethod.GET)
-	public String google(RedirectAttributes rttr, Model model) {
-		String url = "redirect:https://accounts.google.com/o/oauth2/v2/auth?client_id=614414049636-vmoicaro2j8pqts15mto327u6cm9p5u0.apps.googleusercontent.com&redirect_uri=http://localhost:8080/myapp/login/oauth2callback&response_type=code&scope=email%20profile%20openid&access_type=offline";
+	public String google(RedirectAttributes rttr) {
+		String url = "redirect:https://accounts.google.com/o/oauth2/v2/auth?client_id=614414049636-vmoicaro2j8pqts15mto327u6cm9p5u0.apps.googleusercontent.com&redirect_uri=https://yewonproj.herokuapp.com/login/oauth2callback&response_type=code&scope=email%20profile%20openid&access_type=offline";
 		// http://localhost:8080/myapp/login/oauth2callback // https://yewonproj.herokuapp.com/login/oauth2callback // http://walab.handong.edu:8080/everyday/login/oauth2callback
 		return url;
 	}
@@ -76,7 +74,7 @@ public class LoginController {
 		googleOAuthRequestParam.setClientId("614414049636-vmoicaro2j8pqts15mto327u6cm9p5u0.apps.googleusercontent.com");
 		googleOAuthRequestParam.setClientSecret("tcD5KS3cmZojZRHPwvoiS5Gy");
 		googleOAuthRequestParam.setCode(authCode);
-		googleOAuthRequestParam.setRedirectUri("http://localhost:8080/myapp/login/oauth2callback"); 
+		googleOAuthRequestParam.setRedirectUri("https://yewonproj.herokuapp.com/login/oauth2callback"); 
 		// http://localhost:8080/myapp/login/oauth2callback // https://yewonproj.herokuapp.com/login/oauth2callback // http://walab.handong.edu:8080/everyday/login/oauth2callback
 		googleOAuthRequestParam.setGrantType("authorization_code");
 
@@ -126,7 +124,7 @@ public class LoginController {
 		} else { // 로그인 실패
 			System.out.println("구글 정보가 DB에 저장 안되어있음!");
 			if (service.insertMember(checkvo) == 0) {
-				System.out.println("구글 정보로 회원가입 실패! 왜일까?? ");
+				System.out.println("구글 정보로 회원가입 실패!");
 				returnURL = "redirect:/login/login";
 			}
 			else {
