@@ -421,9 +421,9 @@ span {
 			<li><a href="csee" class="here">게시판</a></li>
 			<li><a href="#">시간표</a></li>
 			<li><a href="#">강의평가</a></li>
-			<li><a href="../hgushop">HGU SHOP</a></li>
+			<li><a href="${pageContext.request.contextPath}/hgushop">HGU SHOP</a></li>
 			<li><a href="#">친구</a></li>
-			<li><a href="../bookstore">책방</a></li>
+			<li><a href="${pageContext.request.contextPath}/bookstore">책방</a></li>
 			<li><a href="#">캠퍼스픽</a></li>
 		</ul>
 

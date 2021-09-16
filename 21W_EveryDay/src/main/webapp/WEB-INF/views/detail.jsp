@@ -360,12 +360,12 @@ input[type="text"]:focus {
 		</div>
 
 		<ul>
-			<li><a href="../csee" class="here">게시판</a></li>
+			<li><a href="${pageContext.request.contextPath}/csee" class="here">게시판</a></li>
 			<li><a href="#">시간표</a></li>
 			<li><a href="#">강의평가</a></li>
-			<li><a href="../hgushop">HGU SHOP</a></li>
+			<li><a href="${pageContext.request.contextPath}/hgushop">HGU SHOP</a></li>
 			<li><a href="#">친구</a></li>
-			<li><a href="#">책방</a></li>
+			<li><a href="${pageContext.request.contextPath}/bookstore">책방</a></li>
 			<li><a href="#">캠퍼스픽</a></li>
 		</ul>
 
@@ -373,7 +373,7 @@ input[type="text"]:focus {
 			<i class="fa fa-envelope-o icon" aria-hidden="true"></i>
 			<div class="hv">
 				<i class="fa fa-user-o icon" aria-hidden="true"></i> <a
-					href="../../login/logout" class="logout">로그아웃</a>
+					href="${pageContext.request.contextPath}/login/logout" class="logout">로그아웃</a>
 			</div>
 
 		</div>
@@ -383,7 +383,7 @@ input[type="text"]:focus {
 		<div class="menu-wrap">
 			<div class="border"></div>
 			<ul>
-				<li><a href="../csee" class="here">자유게시판</a></li>
+				<li><a href="${pageContext.request.contextPath}/csee" class="here">자유게시판</a></li>
 				<li><a href="#">비밀게시판</a></li>
 				<li><a href="#">졸업생게시판</a></li>
 				<li><a href="#">새내기게시판</a></li>
@@ -443,7 +443,7 @@ input[type="text"]:focus {
 				</div>
 
 				<div class="action">
-					<a href="../editform/${u.seq}">수정</a> <a
+					<a href="${pageContext.request.contextPath}/editform/${u.seq}">수정</a> <a
 						href="javascript:delete_ok('${u.seq}')">삭제</a>
 				</div>
 				<div style="clear: left;">
@@ -460,7 +460,7 @@ input[type="text"]:focus {
 				</button>
 			</div>
 
-			<button type="button" class="back" onclick="location.href='../csee' ">
+			<button type="button" class="back" onclick="location.href='${pageContext.request.contextPath}/csee' ">
 				<i class="fa fa-list" aria-hidden="true" style="margin: 5px;"></i>글
 				목록
 			</button>
