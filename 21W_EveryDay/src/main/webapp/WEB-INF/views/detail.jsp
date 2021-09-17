@@ -337,16 +337,16 @@ input[type="text"]:focus {
 	function delete_ok(id) {
 		var a = confirm("정말 삭제하시겠습니까?");
 		if (a)
-			location.href = '../deleteok/' + id;
+			location.href = '${pageContext.request.contextPath}/deleteok/' + id;
 	}
 </script>
 <link rel="stylesheet"
 	href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
 	integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN"
 	crossorigin="anonymous">
-<link rel=" shortcut icon" href="../img/favicon.ico" type="image/x-icon">
+<link rel=" shortcut icon" href="${pageContext.request.contextPath}/img/favicon.ico" type="image/x-icon">
 <!--favicon 설정 -->
-<link rel="icon" href="../img/favicon.ico" type="image/x-icon">
+<link rel="icon" href="${pageContext.request.contextPath}/img/favicon.ico" type="image/x-icon">
 <!--favicon 설정 -->
 </head>
 <body>
@@ -443,7 +443,7 @@ input[type="text"]:focus {
 				</div>
 
 				<div class="action">
-					<a href="${pageContext.request.contextPath}/editform/${u.seq}">수정</a> <a
+					<a href="${pageContext.request.contextPath}/main/editform/${u.seq}">수정</a> <a
 						href="javascript:delete_ok('${u.seq}')">삭제</a>
 				</div>
 				<div style="clear: left;">

@@ -277,20 +277,20 @@ input[type="text"]:focus {
 	function delete_ok(id) {
 		var a = confirm("정말 삭제하시겠습니까?");
 		if (a)
-			location.href = '../deletebookok/' + id;
+			location.href = '${pageContext.request.contextPath}/deletebookok/' + id;
 	}
 </script>
-<link rel=" shortcut icon" href="../img/favicon.ico" type="image/x-icon">
+<link rel=" shortcut icon" href="${pageContext.request.contextPath}/img/favicon.ico" type="image/x-icon">
 <!--favicon 설정 -->
-<link rel="icon" href="../img/favicon.ico" type="image/x-icon">
+<link rel="icon" href="${pageContext.request.contextPath}/img/favicon.ico" type="image/x-icon">
 <!--favicon 설정 -->
 <link rel="stylesheet"
 	href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
 	integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN"
 	crossorigin="anonymous">
-<link rel=" shortcut icon" href="../img/favicon.ico" type="image/x-icon">
+<link rel=" shortcut icon" href="${pageContext.request.contextPath}/img/favicon.ico" type="image/x-icon">
 <!--favicon 설정 -->
-<link rel="icon" href="../img/favicon.ico" type="image/x-icon">
+<link rel="icon" href="${pageContext.request.contextPath}/img/favicon.ico" type="image/x-icon">
 <!--favicon 설정 -->
 </head>
 <body>
@@ -304,12 +304,12 @@ input[type="text"]:focus {
 		</div>
 
 		<ul>
-			<li><a href="main/csee">게시판</a></li>
+			<li><a href="${pageContext.request.contextPath}/csee">게시판</a></li>
 			<li><a href="#">시간표</a></li>
 			<li><a href="#">강의평가</a></li>
-			<li><a href="hgushop">HGU SHOP</a></li>
+			<li><a href="${pageContext.request.contextPath}/hgushop">HGU SHOP</a></li>
 			<li><a href="#">친구</a></li>
-			<li><a href="../bookstore" class="here">책방</a></li>
+			<li><a href="${pageContext.request.contextPath}/bookstore" class="here">책방</a></li>
 			<li><a href="#">캠퍼스픽</a></li>
 		</ul>
 
@@ -317,7 +317,7 @@ input[type="text"]:focus {
 			<i class="fa fa-envelope-o icon" aria-hidden="true"></i>
 			<div class="hv">
 				<i class="fa fa-user-o icon" aria-hidden="true"></i> <a
-					href="../../login/logout" class="logout">로그아웃</a>
+					href="${pageContext.request.contextPath}/login/logout" class="logout">로그아웃</a>
 			</div>
 
 		</div>
@@ -392,13 +392,13 @@ input[type="text"]:focus {
 
 			<div class="post">
 				<div class="action">
-					<a href="../editform/${u.seq}">수정</a> <a
+					<a href="${pageContext.request.contextPath}/editform/${u.seq}">수정</a> <a
 						href="javascript:delete_ok('${u.seq}')">삭제</a>
 				</div>
 			</div>
 
 			<button type="button" class="back"
-				onclick="location.href='../bookstore' ">
+				onclick="location.href='${pageContext.request.contextPath}/bookstore' ">
 				<i class="fa fa-list" aria-hidden="true" style="margin: 5px;"></i>책
 				목록
 			</button>

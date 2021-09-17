@@ -145,6 +145,7 @@ a {
 
 .menu li {
 	padding: 2px;
+	text-align: left;
 }
 
 .menu li a {
@@ -334,9 +335,9 @@ textarea {
 	href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
 	integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN"
 	crossorigin="anonymous">
-<link rel=" shortcut icon" href="../img/favicon.ico" type="image/x-icon">
+<link rel=" shortcut icon" href="${pageContext.request.contextPath}/img/favicon.ico" type="image/x-icon">
 <!--favicon 설정 -->
-<link rel="icon" href="../img/favicon.ico" type="image/x-icon">
+<link rel="icon" href="${pageContext.request.contextPath}/img/favicon.ico" type="image/x-icon">
 <!--favicon 설정 -->
 </head>
 <body>
@@ -350,12 +351,12 @@ textarea {
 		</div>
 
 		<ul>
-			<li><a href="../csee" class="here">게시판</a></li>
+			<li><a href="${pageContext.request.contextPath}/main/csee" class="here">게시판</a></li>
 			<li><a href="#">시간표</a></li>
 			<li><a href="#">강의평가</a></li>
-			<li><a href="../hgushop">HGU SHOP</a></li>
+			<li><a href="${pageContext.request.contextPath}/hgushop">HGU SHOP</a></li>
 			<li><a href="#">친구</a></li>
-			<li><a href="#">책방</a></li>
+			<li><a href="${pageContext.request.contextPath}/bookstore">책방</a></li>
 			<li><a href="#">캠퍼스픽</a></li>
 		</ul>
 
@@ -363,7 +364,7 @@ textarea {
 			<i class="fa fa-envelope-o icon" aria-hidden="true"></i>
 			<div class="hv">
 				<i class="fa fa-user-o icon" aria-hidden="true"></i> <a
-					href="../../login/logout" class="logout">로그아웃</a>
+					href="${pageContext.request.contextPath}/login/logout" class="logout">로그아웃</a>
 			</div>
 
 		</div>
@@ -373,7 +374,7 @@ textarea {
 		<div class="menu-wrap">
 			<div class="border"></div>
 			<ul>
-				<li><a href="../csee" class="here">자유게시판</a></li>
+				<li><a href="${pageContext.request.contextPath}/main/csee" class="here">자유게시판</a></li>
 				<li><a href="#">비밀게시판</a></li>
 				<li><a href="#">졸업생게시판</a></li>
 				<li><a href="#">새내기게시판</a></li>
@@ -426,7 +427,7 @@ textarea {
 
 			<div class="post">
 
-				<form method="post" action="../editok">
+				<form method="post" action="${pageContext.request.contextPath}/main/editok">
 					<input type="hidden" name="seq" value="${u.seq}" /> <input
 						type="text" name="title" value="${u.title}"
 						class="no-border title" />
